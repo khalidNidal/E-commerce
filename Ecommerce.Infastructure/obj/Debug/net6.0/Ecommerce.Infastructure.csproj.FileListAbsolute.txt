@@ -1,0 +1,17 @@
+D:\BackEndIntern\Onion\Ecommerce.Infastructure\bin\Debug\net6.0\Ecommerce.Infastructure.deps.json
+D:\BackEndIntern\Onion\Ecommerce.Infastructure\bin\Debug\net6.0\Ecommerce.Infastructure.runtimeconfig.json
+D:\BackEndIntern\Onion\Ecommerce.Infastructure\bin\Debug\net6.0\Ecommerce.Infastructure.dll
+D:\BackEndIntern\Onion\Ecommerce.Infastructure\bin\Debug\net6.0\Ecommerce.Infastructure.pdb
+D:\BackEndIntern\Onion\Ecommerce.Infastructure\bin\Debug\net6.0\Ecommerce.Core.dll
+D:\BackEndIntern\Onion\Ecommerce.Infastructure\bin\Debug\net6.0\Ecommerce.Core.pdb
+D:\BackEndIntern\Onion\Ecommerce.Infastructure\obj\Debug\net6.0\Ecommerce.Infastructure.csproj.AssemblyReference.cache
+D:\BackEndIntern\Onion\Ecommerce.Infastructure\obj\Debug\net6.0\Ecommerce.Infastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\BackEndIntern\Onion\Ecommerce.Infastructure\obj\Debug\net6.0\Ecommerce.Infastructure.AssemblyInfoInputs.cache
+D:\BackEndIntern\Onion\Ecommerce.Infastructure\obj\Debug\net6.0\Ecommerce.Infastructure.AssemblyInfo.cs
+D:\BackEndIntern\Onion\Ecommerce.Infastructure\obj\Debug\net6.0\Ecommerce.Infastructure.csproj.CoreCompileInputs.cache
+D:\BackEndIntern\Onion\Ecommerce.Infastructure\obj\Debug\net6.0\Ecommerce.Infastructure.csproj.CopyComplete
+D:\BackEndIntern\Onion\Ecommerce.Infastructure\obj\Debug\net6.0\Ecommerce.Infastructure.dll
+D:\BackEndIntern\Onion\Ecommerce.Infastructure\obj\Debug\net6.0\refint\Ecommerce.Infastructure.dll
+D:\BackEndIntern\Onion\Ecommerce.Infastructure\obj\Debug\net6.0\Ecommerce.Infastructure.pdb
+D:\BackEndIntern\Onion\Ecommerce.Infastructure\obj\Debug\net6.0\Ecommerce.Infastructure.genruntimeconfig.cache
+D:\BackEndIntern\Onion\Ecommerce.Infastructure\obj\Debug\net6.0\ref\Ecommerce.Infastructure.dll

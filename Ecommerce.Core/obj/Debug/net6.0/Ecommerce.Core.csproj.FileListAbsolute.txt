@@ -1,0 +1,12 @@
+D:\BackEndIntern\Onion\Ecommerce.Core\bin\Debug\net6.0\Ecommerce.Core.deps.json
+D:\BackEndIntern\Onion\Ecommerce.Core\bin\Debug\net6.0\Ecommerce.Core.dll
+D:\BackEndIntern\Onion\Ecommerce.Core\bin\Debug\net6.0\Ecommerce.Core.pdb
+D:\BackEndIntern\Onion\Ecommerce.Core\obj\Debug\net6.0\Ecommerce.Core.csproj.AssemblyReference.cache
+D:\BackEndIntern\Onion\Ecommerce.Core\obj\Debug\net6.0\Ecommerce.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\BackEndIntern\Onion\Ecommerce.Core\obj\Debug\net6.0\Ecommerce.Core.AssemblyInfoInputs.cache
+D:\BackEndIntern\Onion\Ecommerce.Core\obj\Debug\net6.0\Ecommerce.Core.AssemblyInfo.cs
+D:\BackEndIntern\Onion\Ecommerce.Core\obj\Debug\net6.0\Ecommerce.Core.csproj.CoreCompileInputs.cache
+D:\BackEndIntern\Onion\Ecommerce.Core\obj\Debug\net6.0\Ecommerce.Core.dll
+D:\BackEndIntern\Onion\Ecommerce.Core\obj\Debug\net6.0\refint\Ecommerce.Core.dll
+D:\BackEndIntern\Onion\Ecommerce.Core\obj\Debug\net6.0\Ecommerce.Core.pdb
+D:\BackEndIntern\Onion\Ecommerce.Core\obj\Debug\net6.0\ref\Ecommerce.Core.dll
