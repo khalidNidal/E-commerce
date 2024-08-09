@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Ecommerce.Core.IRepositories;
 using Ecommerce.Infastructure.Dbcontext;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.Infastructure.Repositories
 {
@@ -17,9 +18,9 @@ namespace Ecommerce.Infastructure.Repositories
         }
 
       
-        public void Create(T model)
+        public async Task Create(T model)
         {
-            dbcontext.Set<T>().Add(model);
+           await dbcontext.Set<T>().AddAsync(model);
 
         }
 
@@ -29,15 +30,15 @@ namespace Ecommerce.Infastructure.Repositories
 
         }
 
-        public IEnumerable<T> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
-            return dbcontext.Set<T>().ToList();
+            return await dbcontext.Set<T>().ToListAsync();
            
         }
 
-        public T GetById(int id)
+        public async Task<T> GetById(int id)
         {
-            return dbcontext.Set<T>().Find(id);
+            return await dbcontext.Set<T>().FindAsync(id);
         }
 
         public void Update(T model)

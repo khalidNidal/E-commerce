@@ -20,5 +20,11 @@ namespace Ecommerce.Infastructure.Repositories
             this.dbContext = dbContext;
         }
 
+        public async Task<IEnumerable<Products>> GetAllProductsByCategoryId(int Cat_Id)
+        {
+            var products = await dbContext.Products.Include(x=>x.Categories)
+                .Where(c=>c.Category_Id == Cat_Id).ToListAsync();
+            return products;
+        }
     }
 }

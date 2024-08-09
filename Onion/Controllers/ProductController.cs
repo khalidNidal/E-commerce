@@ -12,27 +12,47 @@ namespace Ecommerce.API.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IUnitOfWorks<Products> unitOfWorks;
+        public ApiResponse ApiResponse { get; set; }
 
-        /*        private readonly IProductRepositories productRepositories;
-*//*        private readonly IGenericRepositories<Products> genericRepositories;
-*/
+        private readonly IProductRepositories productRepositories;
+        /*        private readonly IGenericRepositories<Products> genericRepositories;
+        */
         public ProductController( /*IGenericRepositories<Products> genericRepositories*/ /*IProductRepositories productRepositories*/ IUnitOfWorks<Products> unitOfWorks)
         {
             this.unitOfWorks = unitOfWorks;
-            this.unitOfWorks = unitOfWorks;
+            this.ApiResponse = new ApiResponse();
         }
 
         [HttpGet]
-        public ActionResult GetAll() {
-            var model = unitOfWorks.ProductsRepository.GetAll();
+        public async Task<ActionResult<ApiResponse>> GetAll() {
+            var model = await unitOfWorks.ProductsRepository.GetAll();
+            var check = model.Any();
+            if(check)
+            {
+                ApiResponse.StatusCode = System.Net.HttpStatusCode.OK;
+                ApiResponse.IsSuccess = check;
+                ApiResponse.Result = model;
+                return ApiResponse;
+
+
+
+            }
+            else
+            {
+                ApiResponse.ErrorMessages = "not product found";
+                ApiResponse.StatusCode=System.Net.HttpStatusCode.OK;
+                return ApiResponse;
+
+            }
 
             return Ok(model);        
         
         }
-        [HttpGet]
-        public ActionResult Get(int id)
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult> Get(int id)
         {
-            var model = unitOfWorks.ProductsRepository.GetById(id);
+            var model = await unitOfWorks.ProductsRepository.GetById(id);
             return Ok(model);
 
         }
@@ -46,9 +66,9 @@ namespace Ecommerce.API.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateProduct(Products products)
+        public async Task <ActionResult> CreateProduct(Products products)
         {
-            unitOfWorks.ProductsRepository.Create(products);
+            await unitOfWorks.ProductsRepository.Create(products);
             unitOfWorks.save();
 
             return Ok(products);

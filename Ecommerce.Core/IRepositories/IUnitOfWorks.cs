@@ -10,7 +10,7 @@ namespace Ecommerce.Core.IRepositories
     {
         public IProductRepositories ProductsRepository { get; set; }
         public ICategoryRepositories CategoryRepositories { get; set; }
-        public int save();
+        public Task<int> save();
 
     }
 }

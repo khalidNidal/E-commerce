@@ -8,9 +8,9 @@ namespace Ecommerce.Core.IRepositories
 {
     public interface IGenericRepositories<T> where T : class
     {
-        public IEnumerable<T> GetAll();
-        public T GetById(int id);
-        public void Create(T model);
+        public Task<IEnumerable<T>> GetAll();
+        public Task<T> GetById(int id);
+        public Task Create(T model);
         public void Update(T model);
         public void Delete(int id);
     }

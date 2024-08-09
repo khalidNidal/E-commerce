@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "v+M1P/LS7HddgN+Lh7I0/CMfS3zxCnoo6FfLyVMss2o7t6PTLLxWfASy3MIDBm0h5fgEN2n67n89b1bGpNl7yA==",
+  "dgSpecHash": "+ys856S7G/CRy1igVFh8yP/Tkp9TT1jUqfrcHcXiJVj1UEs02OeGQmtaQv9PHV4aohwnjm+MQ3MlIEsX4bbY8g==",
   "success": true,
   "projectFilePath": "D:\\BackEndIntern\\Onion\\Onion\\Ecommerce.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\USER-Q\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\USER-Q\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\USER-Q\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Users\\USER-Q\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\USER-Q\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\USER-Q\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.7\\microsoft.data.sqlclient.2.1.7.nupkg.sha512",
     "C:\\Users\\USER-Q\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\USER-Q\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.32\\microsoft.entityframeworkcore.6.0.32.nupkg.sha512",

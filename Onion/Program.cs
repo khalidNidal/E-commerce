@@ -23,6 +23,7 @@ namespace Onion
                 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
                 builder.Services.AddScoped(typeof(IProductRepositories),typeof(ProductRepositories));
                 builder.Services.AddScoped(typeof(IGenericRepositories<>), typeof(GenericRepositories<>));
+                builder.Services.AddScoped(typeof(IUnitOfWorks<>),typeof(UnitOfWork<>));
 
 
             builder.Services.AddEndpointsApiExplorer();

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Infastructure.Repositories
 {
-    internal class UnitOfWork<T> : IUnitOfWorks<T> where T : class
+    public class UnitOfWork<T> : IUnitOfWorks<T> where T : class
     {
         private readonly AppDbContext dbContext;
 
@@ -20,7 +20,7 @@ namespace Ecommerce.Infastructure.Repositories
         public IProductRepositories ProductsRepository { get; set; }
         public ICategoryRepositories CategoryRepositories { get; set ; }
 
-        public int save() => dbContext.SaveChanges();
+        public async Task<int> save() => await dbContext.SaveChangesAsync();
         
     }
 }
