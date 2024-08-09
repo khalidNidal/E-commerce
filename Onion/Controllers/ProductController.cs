@@ -1,9 +1,13 @@
-﻿using Ecommerce.Core.Entities;
+﻿using AutoMapper;
+using Ecommerce.API.mapping_profiles;
+using Ecommerce.Core.Entities;
+using Ecommerce.Core.Entities.DTO;
 using Ecommerce.Core.IRepositories;
 using Ecommerce.Infastructure.Dbcontext;
 using Ecommerce.Infastructure.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Ecommerce.API.Controllers
 {
@@ -13,14 +17,17 @@ namespace Ecommerce.API.Controllers
     {
         private readonly IUnitOfWorks<Products> unitOfWorks;
         public ApiResponse ApiResponse { get; set; }
+        public MappingProfile mapper { get; set; }
 
         private readonly IProductRepositories productRepositories;
         /*        private readonly IGenericRepositories<Products> genericRepositories;
         */
-        public ProductController( /*IGenericRepositories<Products> genericRepositories*/ /*IProductRepositories productRepositories*/ IUnitOfWorks<Products> unitOfWorks)
+        public ProductController(/*IGenericRepositories<Products> genericRepositories*/ /*IProductRepositories productRepositories*/ MappingProfile mapper, IUnitOfWorks<Products> unitOfWorks)
         {
+            this.mapper = mapper;
             this.unitOfWorks = unitOfWorks;
             this.ApiResponse = new ApiResponse();
+            
         }
 
         [HttpGet]
@@ -31,6 +38,7 @@ namespace Ecommerce.API.Controllers
             {
                 ApiResponse.StatusCode = System.Net.HttpStatusCode.OK;
                 ApiResponse.IsSuccess = check;
+                var mappedproducts = mapper;
                 ApiResponse.Result = model;
                 return ApiResponse;
 
@@ -41,6 +49,7 @@ namespace Ecommerce.API.Controllers
             {
                 ApiResponse.ErrorMessages = "not product found";
                 ApiResponse.StatusCode=System.Net.HttpStatusCode.OK;
+                ApiResponse.IsSuccess = false;
                 return ApiResponse;
 
             }

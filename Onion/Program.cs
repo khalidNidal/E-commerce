@@ -1,3 +1,4 @@
+using Ecommerce.API.mapping_profiles;
 using Ecommerce.Core.IRepositories;
 using Ecommerce.Infastructure.Dbcontext;
 using Ecommerce.Infastructure.Repositories;
@@ -24,6 +25,7 @@ namespace Onion
                 builder.Services.AddScoped(typeof(IProductRepositories),typeof(ProductRepositories));
                 builder.Services.AddScoped(typeof(IGenericRepositories<>), typeof(GenericRepositories<>));
                 builder.Services.AddScoped(typeof(IUnitOfWorks<>),typeof(UnitOfWork<>));
+                builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 
             builder.Services.AddEndpointsApiExplorer();
