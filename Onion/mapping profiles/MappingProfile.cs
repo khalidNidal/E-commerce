@@ -11,7 +11,7 @@ namespace Ecommerce.API.mapping_profiles
         public MappingProfile()
         {
             CreateMap<Products, ProductDTO>()
-                .ForMember(To => To.Category_Name, from => from.MapFrom(x => x.Categories != null ? x.Name : null));
+                .ForMember(To => To.Category_Name, from => from.MapFrom(x => x.Categories != null ? x.Categories.Name : null));
 
         }
 

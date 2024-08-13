@@ -8,6 +8,7 @@ using Ecommerce.Infastructure.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Linq.Expressions;
 
 namespace Ecommerce.API.Controllers
 {
@@ -17,12 +18,12 @@ namespace Ecommerce.API.Controllers
     {
         private readonly IUnitOfWorks<Products> unitOfWorks;
         public ApiResponse ApiResponse { get; set; }
-        public MappingProfile mapper { get; set; }
+        public IMapper mapper { get; set; }
 
         private readonly IProductRepositories productRepositories;
         /*        private readonly IGenericRepositories<Products> genericRepositories;
         */
-        public ProductController(/*IGenericRepositories<Products> genericRepositories*/ /*IProductRepositories productRepositories*/ MappingProfile mapper, IUnitOfWorks<Products> unitOfWorks)
+        public ProductController(IMapper mapper,/*IGenericRepositories<Products> genericRepositories*/ /*IProductRepositories productRepositories*/  IUnitOfWorks<Products> unitOfWorks)
         {
             this.mapper = mapper;
             this.unitOfWorks = unitOfWorks;
@@ -31,38 +32,69 @@ namespace Ecommerce.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ApiResponse>> GetAll() {
-            var model = await unitOfWorks.ProductsRepository.GetAll();
+        public async Task<ActionResult<ApiResponse>> GetAllProducts([FromQuery] string ? catName ,int pageSize = 2, int pageNumber= 1) {
+            Expression<Func<Products, bool>> Filter = null;
+            if(!string.IsNullOrWhiteSpace(catName))
+            {
+                Filter = x=>x.Categories.Name.Contains(catName);
+            }
+            var model = await unitOfWorks.ProductsRepository.GetAll(page_size : pageSize , page_number:pageNumber
+                , includeProperty:"Categories",filter:Filter);
             var check = model.Any();
-            if(check)
-            {
-                ApiResponse.StatusCode = System.Net.HttpStatusCode.OK;
-                ApiResponse.IsSuccess = check;
-                var mappedproducts = mapper;
-                ApiResponse.Result = model;
-                return ApiResponse;
+           
+                if (check)
+                {
+                    ApiResponse.StatusCode = 200;
+                    ApiResponse.IsSuccess = check;
+                    var mappedproducts = mapper.Map<IEnumerable<Products>, IEnumerable<ProductDTO>>(model);
+                    ApiResponse.Result = mappedproducts;
+                    return ApiResponse;
 
 
 
-            }
-            else
-            {
-                ApiResponse.ErrorMessages = "not product found";
-                ApiResponse.StatusCode=System.Net.HttpStatusCode.OK;
-                ApiResponse.IsSuccess = false;
-                return ApiResponse;
+                }
+                else
+                {
+                    ApiResponse.Message = "not product found";
+                    ApiResponse.StatusCode = 200;
+                    ApiResponse.IsSuccess = false;
+                    return ApiResponse;
 
-            }
+                }
+            
+
+            
 
             return Ok(model);        
         
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> Get(int id)
+        public async Task<ActionResult<ApiResponse>> Get([FromQuery]int id)
         {
-            var model = await unitOfWorks.ProductsRepository.GetById(id);
-            return Ok(model);
+            try
+            {
+
+                if(id <= 0)
+                {
+                    return BadRequest(new ApiValidationResponse(new List<string> {"try positive int, grater than zero" ,"Invalid number" } , 400));
+                }
+                var model = await unitOfWorks.ProductsRepository.GetById(id);
+                if(model == null)
+                {
+                    var x = model.ToString();
+                    return NotFound(new ApiValidationResponse(new List<string> { "Product not found" }, 404) );
+                }
+                return Ok(new ApiResponse(200, result: model));
+
+
+            }
+
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiValidationResponse(new List<string> { "internal server error ", ex.Message }, StatusCodes.Status500InternalServerError));
+            }
+
 
         }
         [HttpPut]
@@ -92,7 +124,14 @@ namespace Ecommerce.API.Controllers
         }
 
 
+        [HttpGet ("Product/{Cat_Id}") ]
+        public async Task<ActionResult> GetProductByCatId(int Cat_Id)
+        {
+            var product = await unitOfWorks.ProductsRepository.GetAllProductsByCategoryId(Cat_Id);
+            var mapperproduct = mapper.Map<IEnumerable<Products>, IEnumerable<ProductDTO>>(product);
+            return Ok(mapperproduct);
 
+        }
 
     }
 }

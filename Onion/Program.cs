@@ -1,7 +1,10 @@
 using Ecommerce.API.mapping_profiles;
+using Ecommerce.Core.Entities;
 using Ecommerce.Core.IRepositories;
 using Ecommerce.Infastructure.Dbcontext;
 using Ecommerce.Infastructure.Repositories;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Onion
@@ -26,7 +29,20 @@ namespace Onion
                 builder.Services.AddScoped(typeof(IGenericRepositories<>), typeof(GenericRepositories<>));
                 builder.Services.AddScoped(typeof(IUnitOfWorks<>),typeof(UnitOfWork<>));
                 builder.Services.AddAutoMapper(typeof(MappingProfile));
+                builder.Services.Configure<ApiBehaviorOptions>(op =>
+                    op.InvalidModelStateResponseFactory=(actionContext)=>
+                    {
+                        var errors = actionContext.ModelState.Where(x=>x.Value.Errors.Count()>0)
+                                                             .SelectMany(x=>x.Value.Errors)
+                                                             .Select(x=>x.ErrorMessage)
+                                                             .ToList();
+                        var validation = new ApiValidationResponse(stausCode:400) { Errors = errors};
+                        return new BadRequestObjectResult(validation);
 
+                    }
+
+
+                );
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
