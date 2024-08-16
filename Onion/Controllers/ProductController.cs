@@ -3,7 +3,7 @@ using Ecommerce.API.mapping_profiles;
 using Ecommerce.Core.Entities;
 using Ecommerce.Core.Entities.DTO;
 using Ecommerce.Core.IRepositories;
-using Ecommerce.Infastructure.Dbcontext;
+using Ecommerce.Infastructure.Data;
 using Ecommerce.Infastructure.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

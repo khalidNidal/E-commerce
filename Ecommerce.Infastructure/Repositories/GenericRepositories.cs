@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Ecommerce.Core.Entities;
 using Ecommerce.Core.IRepositories;
-using Ecommerce.Infastructure.Dbcontext;
+using Ecommerce.Infastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.Infastructure.Repositories

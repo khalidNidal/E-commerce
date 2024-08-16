@@ -31,6 +31,7 @@ namespace Ecommerce.Core.Entities
             return statusCode switch
             {
                 200 => "Successfuly",
+                201=> "createed Successfuly",
                 400 => "Bad Request",
                 404 => "Not found",
                 500 => "Internal Server Error",

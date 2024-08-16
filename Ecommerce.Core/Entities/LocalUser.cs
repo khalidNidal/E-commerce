@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace Ecommerce.Core.Entities
         public string LastName { get; set; }
 
         public string Addreess { get; set; }
-        public ICollection<Orders> Orders { get; set; } = new HashSet<Orders>();
+        public ICollection<Orders> ? Orders { get; set; } = new HashSet<Orders>();
         
     }
 }

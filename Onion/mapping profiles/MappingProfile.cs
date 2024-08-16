@@ -12,7 +12,7 @@ namespace Ecommerce.API.mapping_profiles
         {
             CreateMap<Products, ProductDTO>()
                 .ForMember(To => To.Category_Name, from => from.MapFrom(x => x.Categories != null ? x.Categories.Name : null));
-
+            CreateMap<LocalUser , LocalUserDTO>().ReverseMap();
         }
 
 

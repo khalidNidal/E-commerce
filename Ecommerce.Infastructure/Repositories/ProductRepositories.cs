@@ -1,5 +1,5 @@
 ﻿using Ecommerce.Core.Entities;
-using Ecommerce.Infastructure.Dbcontext;
+using Ecommerce.Infastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Concurrent;

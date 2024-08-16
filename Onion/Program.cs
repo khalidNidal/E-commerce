@@ -1,9 +1,12 @@
 using Ecommerce.API.mapping_profiles;
 using Ecommerce.Core.Entities;
 using Ecommerce.Core.IRepositories;
-using Ecommerce.Infastructure.Dbcontext;
+using Ecommerce.Core.IRepositories.IServices;
+using Ecommerce.Infastructure.Data;
 using Ecommerce.Infastructure.Repositories;
+using Ecommerce.Services;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,6 +32,30 @@ namespace Onion
                 builder.Services.AddScoped(typeof(IGenericRepositories<>), typeof(GenericRepositories<>));
                 builder.Services.AddScoped(typeof(IUnitOfWorks<>),typeof(UnitOfWork<>));
                 builder.Services.AddAutoMapper(typeof(MappingProfile));
+                builder.Services.AddScoped(typeof(IUsersRepository),typeof(UserRepository));
+                builder.Services.AddScoped(typeof(ITokenServices), typeof(TokenSrevice));
+                builder.Services.AddAuthentication();
+
+
+            builder.Services.AddIdentity<LocalUser, IdentityRole>(op =>
+
+            {
+                op.Password.RequireDigit = false;
+                op.Password.RequireLowercase=false;
+                op.Password.RequireUppercase = false;
+                op.Password.RequiredLength = 1;
+                op.Password.RequiredUniqueChars = 0;
+                op.Password.RequireNonAlphanumeric = false;
+    
+            }
+           
+
+            )  
+                              .AddEntityFrameworkStores<AppDbContext>();
+
+
+
+
                 builder.Services.Configure<ApiBehaviorOptions>(op =>
                     op.InvalidModelStateResponseFactory=(actionContext)=>
                     {

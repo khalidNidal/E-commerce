@@ -68,7 +68,7 @@ namespace Ecommerce.Infastructure.Data
         public DbSet<Categories>   Categories { get; set; }
         public DbSet<OrderDetails> OrderDetailes { get; set;}
         public DbSet<Orders> orders { get; set; }
-        public DbSet<LocalUser> localUsers { get; set; }
+        public DbSet <LocalUser> localUsers { get; set; }
 /*        public DbSet<IdentityUser> userIdentities { get; set; }
 */
 

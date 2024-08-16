@@ -1,5 +1,5 @@
 ﻿using Ecommerce.Core.IRepositories;
-using Ecommerce.Infastructure.Dbcontext;
+using Ecommerce.Infastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;

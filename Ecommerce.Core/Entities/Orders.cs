@@ -14,7 +14,8 @@ namespace Ecommerce.Core.Entities
         public DateTime OrderDate { get; set; }
 
         [ForeignKey(nameof(LocalUser))]
-        public int LocalUserId { get; set; }
+        public string LocalUserId { get; set; }
+
 
         public LocalUser ? LocalUser { get; set; }
         public ICollection<OrderDetails> OrderDetailes { get; set; } = new HashSet<OrderDetails>();
