@@ -35,7 +35,7 @@ namespace Ecommerce.Infastructure.Repositories
         }
         public bool IsUniqueUser(string Email)
         {
-            var result = context.localUsers.FirstOrDefault(x=>x.Email == Email);
+            var result = context.localUsers.FirstOrDefault(x=> x.Email == Email);
             return result == null;
                 
         }
