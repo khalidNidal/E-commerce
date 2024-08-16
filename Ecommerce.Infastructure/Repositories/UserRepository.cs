@@ -78,7 +78,7 @@ namespace Ecommerce.Infastructure.Repositories
             {
                 UserName = registerrationRequest.Email.Split('@')[0],
                 Email = registerrationRequest.Email,
-                NormalizedEmail = registerrationRequest.Email,
+                NormalizedEmail = registerrationRequest.Email.ToUpper(),
                 FirstName = registerrationRequest.Fname,
                 LastName = registerrationRequest.Lname,
                 Addreess = registerrationRequest.Address,

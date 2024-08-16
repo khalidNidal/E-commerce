@@ -56,19 +56,22 @@ namespace Ecommerce.API.Controllers
                 }
 
                 var user = usersRepository.Register(model);
-                if (user != null)
+
+
+                if (user == null)
                 {
                     return BadRequest(new ApiValidationResponse(new List<String> { "error while reg" }, 400));
                 }
+
                 else
                 {
-                    return Ok(new ApiResponse(201, result: user));
+                    return Ok(new ApiResponse(201, result:user));
                 }
             }
             catch(Exception ex) 
             {
 
-                return StatusCode(500, new ApiValidationResponse(new List <string>() { ex.Message , "an error while proccing  youre request"},400));
+                return StatusCode(500, new ApiValidationResponse(new List <string>() { ex.Message , "an error while proccing  youre request"}));
             
             }
 

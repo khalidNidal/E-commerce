@@ -47,11 +47,7 @@ namespace Onion
                 op.Password.RequiredUniqueChars = 0;
                 op.Password.RequireNonAlphanumeric = false;
     
-            }
-           
-
-            )  
-                              .AddEntityFrameworkStores<AppDbContext>();
+            }).AddEntityFrameworkStores<AppDbContext>();
 
 
 
